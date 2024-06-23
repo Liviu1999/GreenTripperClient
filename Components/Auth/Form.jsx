@@ -49,6 +49,18 @@ function Form({ isRegister }) {
     }
   };
 
+  const handleGoogleSuccess = (credentialResponse) => {
+    console.log(credentialResponse);
+    // Perform any necessary logic with the Google login response here
+
+    // Redirect to /worked
+    navigate("/worked");
+  };
+
+  const handleGoogleError = () => {
+    console.log("Login Failed");
+  };
+
   return (
     <div className="container-form">
       <div className="container-form-header">
@@ -64,31 +76,12 @@ function Form({ isRegister }) {
       </div>
       <div className="google">
         <GoogleLogin
-          onSuccess={(credentialResponse) => {
-            console.log(credentialResponse);
-          }}
-          onError={() => {
-            console.log("Login Failed");
-          }}
+          onSuccess={handleGoogleSuccess}
+          onError={handleGoogleError}
         />
       </div>
       <p className="line">OR</p>
       <form action="" className="form" onSubmit={handleSubtimt}>
-        {isRegister && (
-          <>
-            <label htmlFor="username">Nickname</label>
-            <input
-              type="text"
-              id="username"
-              placeholder="Enter your username"
-              value={username}
-              onChange={(e) => {
-                setUsername(e.target.value);
-              }}
-              required
-            />
-          </>
-        )}
         <label htmlFor="email">Email</label>
         <input
           type="text"
@@ -123,6 +116,21 @@ function Form({ isRegister }) {
             onClick={() => setShowPassword(!showPassword)}
             className="eye"
           />
+        )}
+        {isRegister && (
+          <>
+            <label htmlFor="username">Nickname</label>
+            <input
+              type="text"
+              id="username"
+              placeholder="Enter your username"
+              value={username}
+              onChange={(e) => {
+                setUsername(e.target.value);
+              }}
+              required
+            />
+          </>
         )}
         <a href="">Forgot password?</a>
         <button type="submit" className="submit">
