@@ -3,11 +3,14 @@ import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { GoogleLogin } from "@react-oauth/google";
+import { FaEyeSlash } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
 
 function Form({ isRegister }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleSubtimt = async (e) => {
@@ -82,6 +85,7 @@ function Form({ isRegister }) {
               onChange={(e) => {
                 setUsername(e.target.value);
               }}
+              required
             />
           </>
         )}
@@ -94,17 +98,33 @@ function Form({ isRegister }) {
           onChange={(e) => {
             setEmail(e.target.value);
           }}
+          required
         />
         <label htmlFor="password">Password</label>
         <input
-          type="text"
+          type={showPassword ? "text" : "password"}
           id="password"
           placeholder="Enter your password"
           value={password}
           onChange={(e) => {
             setPassword(e.target.value);
           }}
+          required
         />
+        {showPassword ? (
+          <FaEyeSlash
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="eye"
+          />
+        ) : (
+          <FaEye
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="eye"
+          />
+        )}
+        <a href="">Forgot password?</a>
         <button type="submit" className="submit">
           {isRegister == true ? "Register" : "Log in"}
         </button>
