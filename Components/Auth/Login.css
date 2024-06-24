@@ -1,8 +1,9 @@
 .container-login {
-  width: 100dvw;
-  height: 100dvh;
+  width: 100vw;
+  height: 100vh;
   display: grid;
-  grid-template-columns: 50dvw 50dvw;
+  grid-template-columns: 50vw 50vw;
+  grid-template-rows: 100vh;
   .container-description {
     padding: 100px 125px 0px 50px;
     background-image: url("https://images.unsplash.com/photo-1597304055693-c5a2c84d62e4?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
@@ -23,7 +24,7 @@
       width: 593px;
       overflow-x: hidden;
       ul {
-        width: 1800px;
+        width: 1780px;
         display: flex;
         li {
           width: 593px;

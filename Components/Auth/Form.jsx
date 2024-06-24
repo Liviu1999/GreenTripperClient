@@ -45,15 +45,11 @@ function Form({ isRegister }) {
       }
     } catch (error) {
       console.error(`${isRegister ? "register" : "login"} failed`, error);
-      // Handle error
     }
   };
 
   const handleGoogleSuccess = (credentialResponse) => {
     console.log(credentialResponse);
-    // Perform any necessary logic with the Google login response here
-
-    // Redirect to /worked
     navigate("/worked");
   };
 
